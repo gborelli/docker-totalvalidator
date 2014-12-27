@@ -12,12 +12,16 @@ ADD ./config /validators
 
 
 # Install dependencies
-RUN apt-get -y install build-essential curl libxml2-dev zlib1g-dev \
+RUN apt-get -y install build-essential locales curl libxml2-dev zlib1g-dev \
     tomcat7  tomcat7-admin default-jdk supervisor \
     mysql-client mysql-server \
     php5-common libapache2-mod-php5 php5-gd php5-cli php5-mysql \
     opensp libosp-dev libtidy-dev \
     apache2-mpm-prefork libapache2-mod-perl2 libxml-libxml-perl unzip
+
+
+RUN echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen && locale-gen
+ENV LANG en_US.UTF-8
 
 RUN curl -s -L -O https://github.com/downloads/petdance/tidyp/tidyp-1.04.tar.gz
 RUN tar -xzf tidyp-1.04.tar.gz

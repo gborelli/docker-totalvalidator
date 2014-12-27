@@ -1,0 +1,15 @@
+validators:
+  build: sitevalidators
+  ports:
+   - "9000:80"   # apache
+   - "8888"      # vnu
+   - "9080:8080" # tomcat
+   - "3306"      # mysql
+redis:
+  image: redis:latest
+  ports:
+   - "6379"
+postgres:
+  build: postgresql
+  ports:
+    - "5432"
