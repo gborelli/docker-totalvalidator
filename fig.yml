@@ -14,7 +14,7 @@ postgres:
     - "5432:5432"
 totalvalidator:
   build: .
-  command: /bin/bash /src/run_test.sh
+  command: /bin/bash /src/run.sh
   ports:
     - "6543:6543" # pyramid
   volumes:

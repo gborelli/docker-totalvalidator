@@ -21,10 +21,4 @@ WORKDIR /src
 RUN cd abstract-totalvalidator && python2.7 setup.py develop
 RUN cd totalvalidatorfrontend && python2.7 setup.py develop
 
-# RUN mkdir /etc/totalvalidator
-# ADD config/totalvalidator.cfg /etc/totalvalidator/totalvalidator.cfg
-# ADD config/totalvalidatorfrontend.ini /etc/totalvalidator/totalvalidatorfrontend.ini
-# ADD config/who.ini /etc/totalvalidator/who.ini
-
-
-# CMD pserve /etc/totalvalidator/totalvalidatorfrontend.ini
+CMD pserve /etc/totalvalidator/totalvalidatorfrontend.ini
