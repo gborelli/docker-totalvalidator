@@ -1,4 +1,5 @@
 .DS_Store
 tmp/
 remove_all.sh
-
+src/abstract-totalvalidator
+src/totalvalidatorfrontend
