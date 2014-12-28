@@ -2,14 +2,24 @@ validators:
   build: sitevalidators
   ports:
    - "9000:80"   # apache
-   - "8888"      # vnu
+   - "8888:8888" # vnu
    - "9080:8080" # tomcat
-   - "3306"      # mysql
 redis:
   image: redis:latest
   ports:
-   - "6379"
+   - "6379:6379"
 postgres:
   build: postgresql
   ports:
-    - "5432"
+    - "5432:5432"
+totalvalidator:
+  build: .
+  command: /bin/bash /src/run_test.sh
+  ports:
+    - "6543:6543" # pyramid
+  volumes:
+    - src/:/src
+  links:
+    - redis
+    - validators
+    - postgres
