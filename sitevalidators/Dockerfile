@@ -83,6 +83,10 @@ RUN curl -s -L -o achecker.zip https://github.com/atutor/AChecker/archive/master
 RUN unzip achecker.zip
 RUN mv AChecker-master /var/www/html/achecker
 
+# AChecker fix blank page after login
+RUN sed -i "s/'..\/..\/include\/'/dirname\(__FILE__\) . '\/..\/..\/include\/'/" /var/www/html/achecker/include/classes/User.class.php
+
+
 # Configuring AChecker
 RUN sh ./achecker/configure.sh
 RUN mv ./achecker/config.inc.php /var/www/html/achecker/include/config.inc.php
